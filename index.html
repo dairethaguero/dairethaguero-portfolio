@@ -154,7 +154,8 @@ section.block{padding-block:clamp(48px,7vw,88px)}
 /* Goal tool */
 .goal-panel{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);overflow:hidden}
 @media (max-width:820px){.goal-panel{grid-template-columns:1fr}}
-.gp-left{padding:clamp(22px,3vw,36px)}
+.gp-left{padding:clamp(22px,3vw,36px);display:flex;align-items:center}
+.gp-left .plays li{font-weight:600;font-size:1.08rem}
 .gp-right{padding:clamp(22px,3vw,36px);background:var(--cs);border-left:2px solid var(--edge);display:flex;flex-direction:column;gap:14px}
 @media (max-width:820px){.gp-right{border-left:0;border-top:2px solid var(--edge)}}
 .gp-left h3{font-size:clamp(1.6rem,3vw,2rem);font-weight:800;margin:4px 0 20px}
@@ -295,9 +296,18 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
   .hello,.role-pill{max-width:calc(100% - 128px)}
   .d1{display:none}
 }
-.stickers{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(36px,5vw,56px)}
-@media (max-width:820px){.stickers{grid-template-columns:1fr 1fr}}
+.stickers{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(36px,5vw,56px)}
+@media (max-width:820px){.stickers{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:4px}.sticker{padding:12px 10px 14px;border-radius:16px}.sticker b{font-size:1.45rem}.sticker span{font-size:.76rem}.sticker em{font-size:.68rem;padding:1px 6px}}
 
+.others{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+@media (max-width:640px){.others{grid-template-columns:1fr 1fr;gap:12px}.other{padding:14px}.other b{font-size:1.05rem}.other span{font-size:.85rem}}
+.other{display:grid;gap:6px;align-content:start;padding:18px;border-radius:20px;border:2px solid var(--edge);background:var(--c);box-shadow:4px 4px 0 var(--shadow);transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.other:nth-child(odd){transform:rotate(-.8deg)}.other:nth-child(even){transform:rotate(.8deg)}
+.other:hover{transform:rotate(0) scale(1.03)}
+.other b{font-family:var(--f-display);font-weight:800;font-size:1.25rem;line-height:1.1}
+.other span{color:var(--ink-2);font-size:.95rem;line-height:1.4}
+.other em{font-style:normal;font-family:var(--f-hand);font-weight:700;font-size:.88rem}
+.other a{justify-self:start;font-weight:700;font-size:.9rem}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
 
 /* Mobile: filas deslizables para casos y objetivos */
@@ -329,9 +339,9 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
   <div class="wrap topin">
     <a class="logo" href="#inicio"><span class="logo-dots" aria-hidden="true"><i></i><i></i><i></i></span>Daireth Agüero</a>
     <nav aria-label="Secciones">
-      <a href="#objetivo">Tu marca</a>
       <a href="#casos">Casos</a>
-      <a href="#metodo">Método</a>
+      <a href="#otras">Otras marcas</a>
+      <a href="#objetivo">Tu marca</a>
       <a href="#sobre">Sobre mí</a>
       <a href="#contacto" class="navcta">Contacto</a>
     </nav>
@@ -348,7 +358,7 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
       <p class="hello">¡Hola! Soy Dai <span class="wave" aria-hidden="true">👋</span></p>
       <p class="role-pill"><i aria-hidden="true"></i>Content Strategist · Caracas, Venezuela</p>
       <h1>Convierto <span class="hl hl-y">objetivos de negocio</span> en contenido que la gente <span class="hl hl-p">quiere ver</span>.</h1>
-      <p class="lede">Más de 5 años en agencias digitales diseñando estrategias 360° para el portafolio de Empresas Polar, una marca global de fitness, e-commerce y educación. Me encargo del recorrido completo: concepto, plan por canal, producción y medición.</p>
+      <p class="lede">Más de 5 años en agencias digitales diseñando estrategias 360° para marcas como Toddy, Quaker, Mavesa, Smart Fit y la UCAB. Me encargo del recorrido completo: concepto, plan por canal, producción y medición.</p>
       <div class="ctas">
         <a class="btn primary" href="#casos">Ver casos →</a>
         <a class="btn" href="#objetivo">¿Qué necesita tu marca?</a>
@@ -361,24 +371,48 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
   </div>
   <div class="wrap">
     <div class="stickers" id="stickers" aria-label="Resultados destacados">
-      <div class="sticker s-sun"><em>Mavesa · 2023</em><b>3.1M</b><span>de alcance en la campaña de Navidad</span></div>
-      <div class="sticker s-pink"><em>Smart Fit · 2026</em><b>907K</b><span>reproducciones de creadores en la apertura</span></div>
-      <div class="sticker s-mint"><em>Smart Fit · 2026</em><b>58K</b><span>seguidores en menos de 2 meses</span></div>
-      <div class="sticker s-sky"><em>Toddy · 2023–2024</em><b>205.8K</b><span>seguidores al cierre de Level Up</span></div>
+      <div class="sticker s-sun"><em>Smart Fit · 2026</em><b>58K</b><span>seguidores en menos de 2 meses</span></div>
+      <div class="sticker s-pink"><em>Mavesa · 2023</em><b>3.1M</b><span>de alcance en la campaña de Navidad</span></div>
+      <div class="sticker s-mint"><em>Toddy · 2025</em><b>↑559%</b><span>en interacciones en Navidad</span></div>
       <p class="hint" id="hint" hidden>Psst… puedes moverlos ↖</p>
     </div>
 </div>
   </div>
 </section>
 
-<div class="mq-wrap">
-  <div class="marquee" aria-label="Marcas con las que he trabajado">
-    <div class="mq-track">
-      <ul><li>Mavesa</li><li>Toddy</li><li>Quaker</li><li>Empresas Polar</li><li>Smart Fit</li><li>Fájate</li><li>UCAB</li><li>Century 21</li><li>Seguros Pirámide</li><li>Detergentes ABC</li></ul>
-      <ul aria-hidden="true"><li>Mavesa</li><li>Toddy</li><li>Quaker</li><li>Empresas Polar</li><li>Smart Fit</li><li>Fájate</li><li>UCAB</li><li>Century 21</li><li>Seguros Pirámide</li><li>Detergentes ABC</li></ul>
+
+
+
+<section id="casos" class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">Casos destacados</p><h2>Estrategia, ejecución y resultados</h2></div>
+      <p class="sub">Cinco proyectos contados como estrategia: qué había que lograr, cómo lo planteamos y qué pasó.</p>
+    </div>
+    <div class="board">
+      <div style="min-width:0"><p class="swipe-hint">Desliza para ver más casos →</p>
+      <ol class="case-list" id="caseList"></ol></div>
+      <article class="case-detail chunky" id="caseDetail" tabindex="-1" aria-live="polite"></article>
     </div>
   </div>
-</div>
+</section>
+
+
+<section id="otras" class="block" style="padding-top:clamp(16px,3vw,32px)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">Y también…</p><h2>Otras marcas con las que he trabajado</h2></div>
+    </div>
+    <div class="others">
+      <div class="other" style="--c:var(--pink-s)"><b>Fájate</b><span>E-commerce · web mobile first con SEO y stand en ExpoSalud 2025</span><em>KeyCore · 2025–2026</em><a href="https://www.fajate.ve" target="_blank" rel="noopener">fajate.ve ↗</a></div>
+      <div class="other" style="--c:var(--sun-s)"><b>Empresas Polar</b><span>Estrategia de social media para la cuenta corporativa</span><em>Boom Digital · 2023–2024</em></div>
+      <div class="other" style="--c:var(--sky-s)"><b>Century 21</b><span>Inmobiliaria · project management y apoyo creativo</span><em>Amarillo Creative Lab · 2024</em></div>
+      <div class="other" style="--c:var(--mint-s)"><b>Seguros Pirámide</b><span>Seguros · project management y apoyo creativo</span><em>Amarillo Creative Lab · 2024</em></div>
+      <div class="other" style="--c:var(--lilac-s)"><b>Detergentes ABC</b><span>Consumo masivo · project management</span><em>Amarillo Creative Lab · 2024</em></div>
+      <div class="other" style="--c:var(--tang-s)"><b>Mangone Law Firm</b><span>Sector legal (EE. UU.) · contenido para captar y retener clientes</span><em>Remoto · 2022–2023</em></div>
+    </div>
+  </div>
+</section>
 
 <section id="objetivo" class="block">
   <div class="wrap">
@@ -393,34 +427,6 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
   </div>
 </section>
 
-<section id="casos" class="block">
-  <div class="wrap">
-    <div class="sec-head">
-      <div><p class="eyebrow">Casos seleccionados</p><h2>Estrategia, ejecución y resultados</h2></div>
-      <p class="sub">Cada caso está contado como estrategia: qué había que lograr, cómo lo planteé, qué ejecutamos y qué pasó. Elige uno para ver la ficha.</p>
-    </div>
-    <div class="chips" id="filters" role="group" aria-label="Filtrar por sector"></div>
-    <div class="board">
-      <div style="min-width:0"><p class="swipe-hint">Desliza para ver más casos →</p>
-      <ol class="case-list" id="caseList"></ol></div>
-      <article class="case-detail chunky" id="caseDetail" tabindex="-1" aria-live="polite"></article>
-    </div>
-  </div>
-</section>
-
-<section id="metodo" class="block">
-  <div class="wrap">
-    <div class="band band-sun">
-      <div class="sec-head">
-        <div><p class="eyebrow">Cómo trabajo</p><h2>De objetivo a resultado, en seis pasos</h2></div>
-        <p class="sub">El mismo proceso aplica a un lanzamiento, una temporada o una colaboración. Toca cada paso para ver un ejemplo real.</p>
-      </div>
-      <div class="steps" id="steps" role="tablist" aria-label="Pasos del método"></div>
-      <div class="step-panel chunky fade" id="stepPanel" role="tabpanel"></div>
-    </div>
-  </div>
-</section>
-
 <section id="sobre" class="block">
   <div class="wrap">
     <div class="sec-head">
@@ -428,18 +434,16 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
     </div>
     <div class="about">
       <div class="prose">
-        <p>Soy estratega de contenido y estudio Comunicación Social en la UCAB. Empecé como community manager y crecí hacia la estrategia trabajando con las marcas de Empresas Polar, y hoy diseño planes completos para marcas de consumo masivo, fitness, e-commerce y educación.</p>
-        <p>Conozco el proceso de punta a punta. Defino el concepto y los pilares, armo el plan por canal y, cuando el proyecto lo pide, también reviso, grabo y edito. Esa cercanía con la producción hace que mis estrategias se puedan ejecutar de verdad.</p>
-        <p>Uso IA todos los días para investigar, producir y ordenar flujos de trabajo, siempre cuidando la coherencia de marca.</p>
+        <p>Estudio Comunicación Social en la UCAB y empecé como community manager. Crecí hacia la estrategia con las marcas de Empresas Polar, y hoy diseño planes completos que también sé llevar a producción: cuando hace falta, reviso, grabo y edito. Me apoyo en la IA para avanzar más rápido, sin dejar de lado mi criterio profesional.</p>
         <div class="facts">
-          <span>Híbrido en Caracas o remoto</span><span>Español nativo</span><span>Inglés B1</span>
+          <span>Comunicación Social · UCAB</span><span>Español nativo</span><span>Inglés B1</span>
         </div>
       </div>
       <div class="skills">
-        <div class="skill"><h4>Estrategia</h4><p>Estrategias 360°, conceptos creativos, pilares de contenido, buyer personas, benchmark, estrategias de lanzamiento y de temporada.</p></div>
-        <div class="skill"><h4>Contenido y canales</h4><p>Grillas editoriales, contenido orgánico, influencers y UGC, colaboraciones de marca, activaciones BTL, web con enfoque SEO.</p></div>
-        <div class="skill"><h4>Data</h4><p>KPIs de campaña, Meta Business, Looker Studio, reportes y ajuste de estrategia por resultados.</p></div>
-        <div class="skill"><h4>IA y producción</h4><p>ChatGPT, Claude, Veo, ElevenLabs, CapCut, Photoshop, Illustrator, Canva. Guiones, talentos y rodajes.</p></div>
+        <div class="skill"><h4>Estrategia</h4><p>Estrategias 360°, conceptos creativos, pilares de contenido y lanzamientos.</p></div>
+        <div class="skill"><h4>Contenido y canales</h4><p>Orgánico, influencers y UGC, collabs, BTL y web con SEO.</p></div>
+        <div class="skill"><h4>Data</h4><p>KPIs, Meta Business y Looker Studio para ajustar sobre la marcha.</p></div>
+        <div class="skill"><h4>IA y producción</h4><p>ChatGPT, Claude, Veo, ElevenLabs, CapCut y Adobe. Guiones, talentos y rodajes.</p></div>
       </div>
     </div>
   </div>
@@ -457,7 +461,7 @@ footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:1
       <button class="btn pink" type="button" id="copyMail">Copiar correo</button>
       <a class="btn" href="https://www.linkedin.com/in/daireth-marketing/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
-    <p class="c-note" id="copyNote" aria-live="polite">Disponible para formato híbrido en Caracas o remoto.</p>
+    <p class="c-note" id="copyNote" aria-live="polite">Escríbeme para hablar de estrategia, contenido o colaboraciones.</p>
   </div>
 </section>
 <footer><div class="wrap"><span>Daireth Agüero · Content Strategist</span><span>Caracas, Venezuela</span></div></footer>
@@ -477,45 +481,28 @@ const CASES=[
  source:"Fuente de los datos de la apertura: reporte de Conecta Comunicaciones.",
  links:[["https://www.instagram.com/reel/DdMD92Fv9nk/","Reel de lanzamiento"],["https://www.tiktok.com/@melanieesserm/video/7689996667487309063","TikTok de Melanie Esser en la apertura"],["https://www.bancaynegocios.com/smart-fit-llega-a-venezuela/","Nota en Banca y Negocios"]],
  channels:["Instagram","TikTok","Influencers","Collabs","Pauta","BTL y eventos","Web y SEO","Producción con IA"]},
+{id:"toddy-navidad",brand:"Toddy",title:"Navidad con Sabor a Felicidad",sector:"cpg",agency:"Boom Digital",year:"2025",role:"Estrategia y producción de campaña",
+ goal:"Impulsar la ocasión de consumo de Toddy durante la Navidad.",
+ strategy:["Campaña de temporada con talentos, piezas audiovisuales, gráficas y concursos que conectan el producto con el momento."],
+ execution:["Selección de talentos.","Pipeline de producción audiovisual y gráfica.","Presupuestos y mecánica de concursos."],
+ bars:[{v:"835K",l:"Visualizaciones",g:104},{v:"62.7K",l:"Interacciones con el contenido",g:559},{v:"2.3K",l:"Nuevos seguidores",g:202}],
+ extra:"Antes, con Level Up (2023–2024), llevamos la cuenta de 190K a 205.8K seguidores.",
+ links:[["https://www.instagram.com/reel/DSa-G7CkXQ5/","Ver la campaña en Instagram"]],
+ channels:["Instagram","Influencers"]},
+{id:"quaker",brand:"Quaker",title:"Mes de la Avena y Quaker en el deporte",sector:"cpg",agency:"Boom Digital",year:"2025",role:"Estrategia de colaboraciones, influencers y eventos",
+ goal:"Darle protagonismo a la avena Quaker en la cocina y en el deporte venezolano.",
+ strategy:["Mes de la Avena: collab Quaker × Canel con un cheesecake saludable, publicación cruzada y un pool de influencers.","Deporte: micro influencers en Gatorade Caracas Rock y el programa de nano influencers Team Quaker para la Carrera CAF."],
+ execution:["Logística de producción y publicación de la collab.","Negociaciones, presupuestos, grabaciones, kits y publicaciones con influencers."],
+ bars:[{v:"126.5K",l:"Visualizaciones de la collab en 4 días",g:419},{v:"47.5K",l:"Alcance",g:474},{v:"19.1K",l:"Interacciones",g:364}],
+ extra:"Más de 5 micro influencers deportivos y 4 meses de programa Team Quaker.",
+ links:[["https://www.instagram.com/p/DQXBJrJDpRA/","Ver la collab en Instagram"]],
+ channels:[]},
 {id:"mavesa",brand:"Mavesa",title:"Navidad 2023: meta de 100K seguidores",sector:"cpg",agency:"Boom Digital",year:"2023",role:"Estrategia digital y gestión de campaña",
  goal:"Llegar a 100K seguidores en Instagram para enero de 2024, usando la temporada navideña como motor.",
  strategy:["Campaña navideña apoyada en creadores con audiencias distintas a la de la marca.","Alianzas con Alfreditomaracalbo, Fabiola Urdaneta y el chef Víctor Moreno."],
  execution:["Guiones de las piezas con cada creador.","Supervisión de producción.","Negociación con los talentos."],
  bars:[{v:"3.1M",l:"Alcance total",g:213},{v:"110K",l:"Interacciones con el contenido",g:960},{v:"16.7K",l:"Clics en enlace",g:945}],
  extra:"Meta de 100K seguidores alcanzada el 19 de enero de 2024.",channels:["Instagram","Influencers"]},
-{id:"toddy-level",brand:"Toddy",title:"Level Up: de 190K a 200K seguidores",sector:"cpg",agency:"Boom Digital",year:"2023–2024",role:"Estrategia de comunidad y gestión del proyecto",
- goal:"Llevar la cuenta de Toddy en Instagram de 190K a 200K seguidores.",
- strategy:["Una serie de retos interactivos que invitaban a participar y compartir.","Aporté ideas a la dirección creativa del concepto Level Up."],
- execution:["Gestión completa del proyecto para que cada pieza saliera a tiempo y cumpliera su función."],
- bars:[{v:"2.4M",l:"Alcance total",g:95.5},{v:"510K",l:"Alcance orgánico",g:228}],
- extra:"205.8K seguidores al cierre: meta de 200K superada.",channels:["Instagram"]},
-{id:"toddy-navidad",brand:"Toddy",title:"Navidad con Sabor a Felicidad",sector:"cpg",agency:"Boom Digital",year:"2025",role:"Estrategia y producción de campaña",
- goal:"Impulsar la ocasión de consumo de Toddy durante la Navidad.",
- strategy:["Campaña de temporada con talentos, piezas audiovisuales, gráficas y concursos que conectan el producto con el momento."],
- execution:["Selección de talentos.","Pipeline de producción audiovisual y gráfica.","Presupuestos y mecánica de concursos."],
- bars:[{v:"835K",l:"Visualizaciones",g:104},{v:"62.7K",l:"Interacciones con el contenido",g:559},{v:"2.3K",l:"Nuevos seguidores",g:202}],
- links:[["https://www.instagram.com/reel/DSa-G7CkXQ5/","Ver la campaña en Instagram"]],
- channels:["Instagram","Influencers"]},
-{id:"quaker-canel",brand:"Quaker × Canel",title:"Mes de la Avena: una receta hecha para compartir",sector:"cpg",agency:"Boom Digital",year:"2025",role:"Estrategia de colaboración",
- goal:"Darle protagonismo a la avena Quaker durante el Mes de la Avena con contenido que la gente quisiera guardar y compartir.",
- strategy:["Colaboración de marca Quaker × Canel: un cheesecake saludable a base de avena.","Publicación cruzada entre ambas cuentas para sumar audiencias.","Un pool de influencers para amplificar la collab y llevarla a más personas."],
- execution:["Estrategia de la collab, logística de producción y publicación.","Coordinación del pool de influencers que amplificó la receta."],
- bars:[{v:"126.5K",l:"Visualizaciones en 4 días",g:419},{v:"47.5K",l:"Alcance",g:474},{v:"19.1K",l:"Interacciones",g:364}],
- links:[["https://www.instagram.com/p/DQXBJrJDpRA/","Ver la collab en Instagram"]],
- channels:["Instagram","Influencers","Collabs"]},
-{id:"quaker-deporte",brand:"Quaker",title:"Gatorade Caracas Rock y Carrera CAF",sector:"cpg",agency:"Boom Digital",year:"2025",role:"Estrategia de influencers y activación de eventos",
- goal:"Posicionar a Quaker dentro del mundo deportivo en Venezuela.",
- strategy:["Gatorade Caracas Rock: más de 5 micro influencers del nicho deportivo, más alianzas con nutricionista y coach.","Carrera CAF: programa de nano influencers “Team Quaker”, con 4 meses de entrenamiento a cambio de contenido orgánico."],
- execution:["Negociaciones, presupuestos, grabaciones, kits y publicaciones."],
- bigs:[{v:"5+",l:"micro influencers deportivos"},{v:"4",l:"meses de programa Team Quaker"}],
- channels:["Instagram","Influencers","BTL y eventos"]},
-{id:"fajate",brand:"Fájate",title:"E-commerce con credibilidad: web, eventos y comunidad",sector:"ecom",agency:"KeyCore",year:"2025–2026",role:"Estrategia digital y lanzamiento web",
- goal:"Fortalecer la tienda online de Fájate y su credibilidad como marca de prendas de control.",
- strategy:["Contenido de autoridad médica con doctores reconocidos en Venezuela.","Web mobile first con textos SEO y banners alineados a la campaña de cada mes.","Contenido orgánico con creadoras UGC para construir comunidad más allá de la pauta."],
- execution:["Stand en ExpoSalud 2025: proveedores, impresos, diseño y pauta.","Lanzamiento web con los equipos de desarrollo y contenido.","Videos 3D de producto generados con IA."],
- extra:"Presencia en ExpoSalud 2025 y nueva web lanzada con foco en SEO.",
- links:[["https://www.fajate.ve","Visitar fajate.ve"],["https://www.instagram.com/reel/DJr2Lx4pCAN/","Reel con doctores"],["https://www.instagram.com/reel/DJ4KQA-tURb/","ExpoSalud 2025"]],
- channels:["Instagram","Influencers","Pauta","BTL y eventos","Web y SEO","Producción con IA"]},
 {id:"ucab",brand:"UCAB",title:"Fabian y Fabiana: dos personajes para el regreso a clases",sector:"edu",agency:"We Flow",year:"2024–2025",role:"Fundadora · Estrategia y operaciones (agencia independiente)",
  goal:"Conectar con los estudiantes de la UCAB antes del regreso a clases, para luego convocarlos a los eventos de bienvenida.",
  strategy:["Creamos a Fabian y Fabiana, dos estudiantes becados por el Programa Andrés Bello, con su propia cuenta de Instagram (@somosfab_ucab).","Primero, contenido que conecta con la vida universitaria: estrés académico, reencuentros con amigos, el inicio del semestre.","Con la conexión creada, los personajes anunciaron las campañas Modo UCAB ON y UCAB Fest y los eventos de bienvenida."],
@@ -525,24 +512,15 @@ const CASES=[
  channels:["Instagram","BTL y eventos","Producción con IA"]}
 ];
 const GOALS=[
-{id:"comunidad",n:"Crecer comunidad",plays:["Una meta concreta de seguidores con fecha, para que todo el plan apunte a lo mismo.","Dinámicas que piden participación: retos, concursos y contenido para compartir.","Creadores que llevan la marca a audiencias nuevas."],cases:[["toddy-level","205.8K seguidores"],["mavesa","100K, meta cumplida"]]},
-{id:"lanzar",n:"Lanzar o adaptar una marca",plays:["Partir del manual de marca y adaptarlo al público local con mini conceptos.","Pilares de contenido claros que ordenan cada pieza.","Planificación semanal para reaccionar rápido, con calendario anticipado de hitos."],cases:[["smartfit","58K en menos de 2 meses"]]},
-{id:"consumo",n:"Impulsar una ocasión de consumo",plays:["Conectar el producto con un momento del año: Navidad, Mes de la Avena.","Mostrar el uso real: recetas, talentos y concursos.","Medir interacción y alcance para ajustar durante la temporada."],cases:[["toddy-navidad","↑559% interacciones"],["quaker-canel","126.5K vistas en 4 días"]]},
-{id:"aliados",n:"Ganar alcance con aliados",plays:["Elegir aliados con audiencias complementarias a la marca.","Diseñar una pieza que funcione para las dos cuentas.","Publicación cruzada y un pool de influencers para sumar alcance desde el primer día."],cases:[["quaker-canel","↑474% alcance"],["mavesa","3.1M de alcance"]]},
-{id:"evento",n:"Activar en el mundo real",plays:["Eventos y activaciones donde ya está la audiencia.","Programas con creadores que viven la experiencia y la cuentan.","Logística completa: talentos, kits, presupuestos y grabaciones."],cases:[["smartfit","907K vistas de creadores"],["quaker-deporte","Programa Team Quaker"],["fajate","ExpoSalud 2025"],["ucab","1K+ en el UCAB Fest"]]},
-{id:"vender",n:"Fortalecer una tienda online",plays:["Una web mobile first, con textos SEO y alineada a cada campaña.","Contenido de autoridad que da confianza para comprar.","Comunidad orgánica con creadoras UGC, además de la pauta."],cases:[["fajate","Nueva web con SEO"]]}
-];
-const STEPS=[
-{n:"Objetivo de negocio",d:"Defino qué tiene que pasar en el negocio y con qué número lo vamos a medir. Sin eso, el contenido no tiene dirección.",ex:"Mavesa: 100K seguidores en Instagram para enero de 2024.",c:"mavesa"},
-{n:"Audiencia y contexto",d:"Reviso el manual de marca, campañas anteriores, la competencia y lo que está pasando en la conversación.",ex:"Smart Fit: estudio del manual global y del historial de campañas antes de proponer contenido local.",c:"smartfit"},
-{n:"Concepto y pilares",d:"Traduzco el objetivo en una idea y en pilares de contenido que ordenan cada pieza.",ex:"UCAB: Fabian y Fabiana, dos personajes becados que conectan con los estudiantes antes de anunciar los eventos.",c:"ucab"},
-{n:"Plan 360° por canal",d:"Decido qué hace cada canal: orgánico, pauta, creadores, colaboraciones, eventos y web.",ex:"Smart Fit: contenido orgánico en Instagram y TikTok, pauta, creadores, evento de apertura con prensa y perfiles de Google Business por sede.",c:"smartfit"},
-{n:"Producción",d:"Llevo el plan a piezas reales: guiones, talentos, rodajes, diseño y flujos con IA.",ex:"Toddy: talentos, piezas audiovisuales y gráficas, presupuestos y concursos de Navidad.",c:"toddy-navidad"},
-{n:"Medición y ajuste",d:"Sigo los KPIs durante la campaña y ajusto lo que no está funcionando.",ex:"Fájate: los productos que destacamos en la web y los conceptos de cada campaña se definen con la data de Looker Studio.",c:"fajate"}
+{id:"lanzar",n:"Lanzar o adaptar una marca",plays:["Adaptar el manual global con mini conceptos locales","Pilares claros que ordenan cada pieza","Grilla semanal y calendario de hitos"],cases:[["smartfit","58K en menos de 2 meses"]]},
+{id:"comunidad",n:"Crecer comunidad",plays:["Una meta de seguidores con fecha","Dinámicas que invitan a participar","Creadores que abren audiencias nuevas"],cases:[["mavesa","100K, meta cumplida"],["toddy-navidad","↑202% nuevos seguidores"]]},
+{id:"consumo",n:"Impulsar una ocasión de consumo",plays:["Conectar el producto con un momento del año","Mostrar el uso real: recetas, talentos y concursos","Aliados e influencers que suman alcance"],cases:[["toddy-navidad","↑559% interacciones"],["quaker","126.5K vistas en 4 días"]]},
+{id:"evento",n:"Activar en el mundo real",plays:["Activaciones donde ya está la audiencia","Creadores que viven la experiencia y la cuentan","Logística completa: talentos, kits y producción"],cases:[["smartfit","907K vistas de creadores"],["quaker","Programa Team Quaker"],["ucab","1K+ en el UCAB Fest"]]}
 ];
 
+
 const COL={sun:["var(--sun)","var(--sun-s)"],tang:["var(--tang)","var(--tang-s)"],pink:["var(--pink)","var(--pink-s)"],mint:["var(--mint)","var(--mint-s)"],sky:["var(--sky)","var(--sky-s)"],lilac:["var(--lilac)","var(--lilac-s)"]};
-const CASE_COL={smartfit:"sun",mavesa:"tang","toddy-level":"sky","toddy-navidad":"pink","quaker-canel":"mint","quaker-deporte":"lilac",fajate:"pink",ucab:"mint"};
+const CASE_COL={smartfit:"sun","toddy-navidad":"pink",quaker:"mint",mavesa:"tang",ucab:"sky"};
 const GOAL_COL={comunidad:"sky",lanzar:"sun",consumo:"pink",aliados:"mint",evento:"tang",vender:"lilac"};
 const SECTOR_COL={all:"sun",cpg:"tang",fit:"sun",ecom:"pink",edu:"mint"};
 const STEP_COL=["sun","pink","mint","sky","lilac","tang"];
@@ -553,9 +531,10 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const byId=id=>CASES.find(c=>c.id===id);
 const secName=id=>(SECTORS.find(s=>s.id===id)||{}).n;
 const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
-let sector="all",current="smartfit",goal="comunidad",step=0;
+let sector="all",current="smartfit",goal="lanzar",step=0;
 
 function renderFilters(){
+  if(!$("#filters"))return;
   $("#filters").innerHTML=SECTORS.map(s=>`<button type="button" class="chip" style="${vars(SECTOR_COL[s.id])}" data-s="${s.id}" aria-pressed="${s.id===sector}"><i></i>${s.n}</button>`).join("");
 }
 function renderList(){
@@ -569,7 +548,7 @@ function renderDetail(animate){
   let res="";
   if(c.bars){
     const max=Math.max(...c.bars.map(b=>b.g));
-    res=`<div class="bars">${c.bars.map(b=>{const w=(b.g/max*100).toFixed(1);return `<div><div class="bar-top"><span class="bar-v">${b.v}</span><span class="bar-g">↑${b.g}%</span></div><div class="bar-track"><div class="bar-fill" data-w="${w}" style="width:${animate?0:w}%"></div></div><span class="bar-l">${esc(b.l)}</span></div>`}).join("")}</div><p class="note-s">Las barras comparan el crecimiento de cada métrica dentro de la campaña.</p>`;
+    res=`<div class="bars">${c.bars.map(b=>{const w=(b.g/max*100).toFixed(1);return `<div><div class="bar-top"><span class="bar-v">${b.v}</span><span class="bar-g">↑${b.g}%</span></div><div class="bar-track"><div class="bar-fill" data-w="${w}" style="width:${animate?0:w}%"></div></div><span class="bar-l">${esc(b.l)}</span></div>`}).join("")}</div>`;
   } else if(c.bigs){
     res=`<div class="bigs">${c.bigs.map(b=>`<div class="big"><div class="bar-v">${b.v}</div><div class="bar-l">${esc(b.l)}</div></div>`).join("")}</div>`;
   }
@@ -589,7 +568,7 @@ function renderDetail(animate){
         <div><h4>La ejecución</h4><ul>${c.execution.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
       </div>
       ${hasRes?`<div class="cd-res"><h4>Los resultados</h4>${res}${extra}</div>`:""}
-      ${c.links?`<div class="cd-links"><h4>Así se vio en redes</h4><div class="links">${c.links.map(([u,t])=>`<a class="btn sm" href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join("")}</div></div>`:""}<div class="cd-ch"><h4>Canales activados</h4><div class="channels">${CHANNELS.map(ch=>`<span class="${c.channels.includes(ch)?"on":""}">${ch}</span>`).join("")}</div></div>
+      ${c.links?`<div class="cd-links"><h4>Así se vio en redes</h4><div class="links">${c.links.map(([u,t])=>`<a class="btn sm" href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join("")}</div></div>`:""}
     </div>
   </div>`;
   if(animate){requestAnimationFrame(()=>requestAnimationFrame(()=>{d.querySelectorAll(".bar-fill").forEach(el=>el.style.width=el.dataset.w+"%")}))}
@@ -607,10 +586,11 @@ function renderGoals(){
   $("#goalChips").innerHTML=GOALS.map(g=>`<button type="button" class="chip" style="${vars(GOAL_COL[g.id])}" role="tab" data-g="${g.id}" aria-selected="${g.id===goal}"><i></i>${g.n}</button>`).join("");
   const g=GOALS.find(x=>x.id===goal),p=$("#goalPanel");
   p.setAttribute("style",vars(GOAL_COL[g.id]));replay(p);
-  p.innerHTML=`<div class="gp-left"><p class="eyebrow">Cómo lo abordo</p><h3>${esc(g.n)}</h3><ol class="plays">${g.plays.map(x=>`<li><span>${esc(x)}</span></li>`).join("")}</ol></div>
+  p.innerHTML=`<div class="gp-left"><ol class="plays">${g.plays.map(x=>`<li><span>${esc(x)}</span></li>`).join("")}</ol></div>
   <div class="gp-right"><p class="eyebrow">Dónde ya lo hice</p>${g.cases.map(([id,m])=>{const c=byId(id);return `<button type="button" class="proof" style="${vars(CASE_COL[id])}" data-open="${id}"><span class="pb">${esc(c.brand)} · ${esc(c.year)}</span><span class="pt">${esc(c.title)}</span><span class="pm">${esc(m)}</span></button>`}).join("")}</div>`;
 }
 function renderSteps(){
+  if(!$("#steps"))return;
   $("#steps").innerHTML=STEPS.map((s,i)=>`<button type="button" class="step" style="${vars(STEP_COL[i])}" role="tab" data-i="${i}" aria-selected="${i===step}"><span class="sn">${i+1}</span><span class="st">${s.n}</span></button>`).join("");
   const s=STEPS[step],c=byId(s.c),p=$("#stepPanel");
   p.setAttribute("style",vars(STEP_COL[step]));replay(p);
@@ -668,7 +648,7 @@ $("#copyMail").addEventListener("click",e=>{
   try{navigator.clipboard.writeText(txt).then(done,sel)}catch(err){sel()}
 });
 
-renderFilters();renderList();renderDetail(false);renderGoals();renderSteps();
+renderFilters();renderList();renderDetail(false);renderGoals();
 })();
 </script>
 
